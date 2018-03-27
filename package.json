@@ -1,0 +1,44 @@
+{
+  "name": "youtvfetcher",
+  "version": "1.0.0",
+  "description": "Fetches recorded shows from youtv.de",
+  "main": "dist/index.js",
+  "scripts": {
+    "prepare": "npm run build",
+    "lint": "eslint src",
+    "clean": "rm -rf dist",
+    "build": "babel src -d dist"
+  },
+  "bin": {
+    "fetchyoutv": "./dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maxnowack/youtvfetcher.git"
+  },
+  "keywords": [
+    "tv",
+    "shows",
+    "recording",
+    "video"
+  ],
+  "author": "Max Nowack <max@unsou.de>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/maxnowack/youtvfetcher/issues"
+  },
+  "homepage": "https://github.com/maxnowack/youtvfetcher#readme",
+  "babel": {
+    "presets": [
+      "env"
+    ]
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.2.2",
+    "babel-preset-env": "^1.6.1",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.9.0"
+  }
+}
