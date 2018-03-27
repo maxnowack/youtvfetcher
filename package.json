@@ -31,7 +31,14 @@
   "homepage": "https://github.com/maxnowack/youtvfetcher#readme",
   "babel": {
     "presets": [
-      "env"
+      [
+        "env",
+        {
+          "targets": {
+            "node": "9.9.0"
+          }
+        }
+      ]
     ],
     "plugins": [
       "transform-object-rest-spread"
