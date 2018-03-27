@@ -4,6 +4,7 @@
   "description": "Fetches recorded shows from youtv.de",
   "main": "dist/index.js",
   "scripts": {
+    "dev": "babel-node src/index.js ./tmp",
     "prepare": "npm run build",
     "lint": "eslint src",
     "clean": "rm -rf dist",
@@ -31,17 +32,24 @@
   "babel": {
     "presets": [
       "env"
+    ],
+    "plugins": [
+      "transform-object-rest-spread"
     ]
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-eslint": "^8.2.2",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.9.0"
   },
   "dependencies": {
-    "dotenv": "^5.0.1"
+    "console-stamp": "^0.2.6",
+    "dotenv": "^5.0.1",
+    "node-fetch": "^2.1.2",
+    "pify": "^3.0.0"
   }
 }
