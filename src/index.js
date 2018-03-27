@@ -1,11 +1,9 @@
 #!/usr/bin/env node
-import stamp from 'console-stamp';
 import fs from 'fs';
 import './env';
 import YouTv from './YouTv';
 import getLoginData from './getLoginData';
-
-stamp(console);
+import notify from './notify';
 
 const downloadPath = process.argv[2] || '.';
 
@@ -18,13 +16,13 @@ const downloadPath = process.argv[2] || '.';
     const { id, title } = recording;
     const path = `${downloadPath}/${id}_${title}.mp4`;
     if (fs.existsSync(path)) {
-      console.log(`Already downloaded. Skipping ${title} (${id})`);
+      notify(`Already downloaded. Skipping ${title} (${id})`);
       return null;
     }
-    console.log(`Downloading ${title} (${id}) …`);
+    notify(`Downloading ${title} (${id}) …`);
     return recording.download().then((stream) => {
       const endPromise = new Promise(resolve => stream.on('end', () => {
-        console.log(`Finished downloading ${title} (${id})`);
+        notify(`Finished downloading ${title} (${id})`);
         resolve();
       }));
       const dest = fs.createWriteStream(path);
@@ -32,5 +30,5 @@ const downloadPath = process.argv[2] || '.';
       return endPromise;
     });
   }));
-  console.log('finished');
+  notify('finished');
 })();

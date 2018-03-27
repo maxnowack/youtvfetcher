@@ -57,6 +57,7 @@
     "console-stamp": "^0.2.6",
     "dotenv": "^5.0.1",
     "node-fetch": "^2.1.2",
+    "node-notifier": "^5.2.1",
     "pify": "^3.0.0"
   }
 }
