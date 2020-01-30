@@ -12,20 +12,19 @@ export default class YouTv {
           password: pass,
         },
       }),
-    }).then(res => res.json()).then(({ token }) => {
+    }).then((res) => res.json()).then(({ token }) => {
       this.token = token;
     });
   }
 
   async fetchRecordings() {
     return fetch('https://www.youtv.de/api/v2/recordings.json', { token: this.token })
-      .then(res => res.json())
+      .then((res) => res.json())
       .then((result) => {
         const { recordings } = result;
-        return Promise.all(recordings.map(({ id }) =>
-          fetch(`https://www.youtv.de/api/v2/recordings/${id}.json`, { token: this.token })
-            .then(res => res.json())
-            .then(({ recording }) => new Recording(recording, this.token))));
+        return Promise.all(recordings.map(({ id }) => fetch(`https://www.youtv.de/api/v2/recordings/${id}.json`, { token: this.token })
+          .then((res) => res.json())
+          .then(({ recording }) => new Recording(recording, this.token))));
       });
   }
 }

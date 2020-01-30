@@ -13,7 +13,7 @@ export default class Recording {
   }
 
   async download(quality = 'hq') {
-    const { file } = this.data.files.filter(i => i.quality === quality)[0];
-    return fetch(file, { token: this.token }).then(res => res.body);
+    const { file } = this.data.files.filter((i) => i.quality === quality)[0];
+    return fetch(file, { token: this.token }).then((res) => res.body);
   }
 }
