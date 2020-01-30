@@ -16,4 +16,12 @@ export default class Recording {
     const { file } = this.data.files.filter((i) => i.quality === quality)[0];
     return fetch(file, { token: this.token }).then((res) => res.body);
   }
+
+  async getSize(quality = 'hq') {
+    const { file } = this.data.files.filter((i) => i.quality === quality)[0];
+    return fetch(file, {
+      token: this.token,
+      method: 'head',
+    }).then((res) => res.headers.get('content-length'));
+  }
 }
